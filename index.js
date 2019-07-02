@@ -3,6 +3,7 @@ const app = express();
 const port = 3001;
 const {performance} = require('perf_hooks');
 const reverser = require('./js-functions/reverser');
+const findDuplicates = require('./js-functions/findDuplicates');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -10,7 +11,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => res.send(timingFramework(reverser)));
+app.get('/', (req, res) => res.send(timingFramework(findDuplicates)));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 function timeToCompleteFunction(fun, argument) {
@@ -28,7 +29,7 @@ function getRandomInt(min, max) {
 
 function generateArraysToTest() {
     let arraysToTest = [];
-    for (i = 5000; i <= 200000; i = i + 5000) {
+    for (i = 1; i <= 120000; i = i + 10000) {
         let currentArray = [];
         for (j = 0; j < i; j++) {
             currentArray.push(getRandomInt(0, 1000));
