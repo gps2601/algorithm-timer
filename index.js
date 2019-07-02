@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const {performance} = require('perf_hooks');
+const reverser = require('./js-functions/reverser');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -9,7 +10,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => res.send(timingFramework(reverse)));
+app.get('/', (req, res) => res.send(timingFramework(reverser)));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 function timeToCompleteFunction(fun, argument) {
@@ -18,15 +19,6 @@ function timeToCompleteFunction(fun, argument) {
     let endTime = performance.now();
     return endTime - startTime;
 };
-
-
-function sort(anArray) {
-    anArray.sort();
-};
-
-function reverse(anArray){
-    anArray.reverse();
-}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -55,6 +47,6 @@ function timingFramework(functionToTest) {
             let result = { "x": lengthOfArray, "y": time};
             results.push(result);
         }
-    )
+    );
     return results;
-}
+};
