@@ -29,7 +29,7 @@ function getRandomInt(min, max) {
 
 function generateArraysToTest() {
     let arraysToTest = [];
-    for (i = 1; i <= 120000; i = i + 10000) {
+    for (i = 1; i <= 40000; i = i + 10000) {
         let currentArray = [];
         for (j = 0; j < i; j++) {
             currentArray.push(getRandomInt(0, 1000));

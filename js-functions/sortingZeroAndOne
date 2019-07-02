@@ -1,0 +1,23 @@
+function sortingOneAndZero(array){
+    let sortedArray = [];
+    let numberOfZero = 0;
+    let lengthOfArray = array.length;
+
+    array.forEach(number => {
+        if (number === 0) {
+            numberOfZero ++;
+        }
+    });
+
+    for(let i=0; i < numberOfZero; i ++) {
+        sortedArray.push(0);
+    }
+
+    for(let i = 0; i < lengthOfArray-numberOfZero; i++) {
+        sortedArray.push(1);
+    }
+
+    return sortedArray;
+};
+
+module.exports = sortingOneAndZero;
